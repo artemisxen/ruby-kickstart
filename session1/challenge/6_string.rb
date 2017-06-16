@@ -8,4 +8,17 @@
 # odds_and_evens("abcdefg",false)   # => "aceg"
 
 def odds_and_evens(string, return_odds)
+	new_string = ""
+	string_array = string.split('')
+	for i in 0..string_array.length-1
+		if i.odd? == true && return_odds == true
+			new_string << string_array[i]
+		elsif i.even? == true && return_odds == false
+			new_string << string_array[i]
+		end
+	end
+	new_string
 end
+
+puts odds_and_evens("abcdefg",true)
+puts odds_and_evens("abcdefg",false)
