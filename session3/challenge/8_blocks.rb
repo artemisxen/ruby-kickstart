@@ -28,12 +28,15 @@
 class Person
   attr_accessor :name
 
-  def initialize(&initializer)
-    @initializer = initializer
-    initializer.call self
+  def initialize(options=Hash.new, &initializer)
+    self.name    = options[:name]
+    self.age     = options[:age]
+    self.quote   = options[:quote]
+    @initializer = (initializer || Proc.new { |person| }) 
+    reinit
   end
 
   def reinit
-    @initializer.call self
+    @initializer.call(self)
   end
 end
